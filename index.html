@@ -21,14 +21,14 @@
 		<h1 class="title mt-5 mb-2">ItemSzop</h1>
 		<nav class="navbar" role="navigation" aria-label="main navigation">
 			<div class="navbar-brand">
-				<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+				<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" v-on:click="showNav = !showNav" v-bind:class="{ 'is-active' : showNav }">
 					<span aria-hidden="true"></span>
 					<span aria-hidden="true"></span>
 					<span aria-hidden="true"></span>
 				</a>
 			</div>
 
-			<div id="navbarBasicExample" class="navbar-menu">
+			<div id="navbarBasicExample" class="navbar-menu" v-bind:class="{ 'is-active' : showNav }">
 				<div class="navbar-start">
 					<router-link to="/" class="navbar-item">
 						Sklep
@@ -150,10 +150,9 @@
 	})
 	const app = new Vue({
 		router,
-		data () {
-			return {
-				breadcrumbList: []
-			}
+		data: {
+			breadcrumbList: [],
+			showNav: false
 		},
 		mounted: function() { this.updateList() },
 		watch: {'$route': function(){ this.updateList() } },
