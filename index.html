@@ -9,7 +9,13 @@
 </head>
 <body>
 	<script type="text/html" id="_sklep">
-		<h1>xd</h1>
+		<h1>Sklep</h1>
+	</script>
+	<script type="text/html" id="_regulamin">
+		<h1>Regulamin</h1>
+	</script>
+	<script type="text/html" id="_voucher">
+		<h1>Voucher</h1>
 	</script>
 	<div class="container" id="app">
 		<h1 class="title mt-5 mb-2">ItemSzop</h1>
@@ -40,9 +46,13 @@
 			<div class="column is-two-thirds">
 				<div class="card">
 					<header class="card-header">
-						<p class="card-header-title">
-							Breadcrumb
-						</p>
+						<nav class="breadcrumb p-3" aria-label="breadcrumbs">
+							<ul>
+								<li v-for="(breadcrumb, idx) in breadcrumbList" :key="idx" @click="routeTo(idx)" :class="{'linked': !!breadcrumb.link}">
+									<a>{{ breadcrumb.name }}</a>
+								</li>
+							</ul>
+						</nav>
 					</header>
 					<div class="card-content">
 						<div class="content">
@@ -81,19 +91,76 @@
 
 	</div>
 	<script>
-	const Foo = { template: '<div>foo</div>'}
-	const Bar = { template: '<div>bar</div>'}
-	const Main = { template: '#_sklep' }
+	const voucher = { template: '#_voucher' }
+	const regulamin = { template: '#_regulamin' }
+	const sklep = { template: '#_sklep' }
 	const router = new VueRouter({
-		routes:[
-			{ path: '/foo', component: Foo },
-			{ path: '/bar', component: Bar },
-			{ path: '/', component: Main}
+		routes: [
+			{
+				path: '/voucher',
+				component: voucher,
+				meta: {
+					breadcrumb:[
+						{
+							name:'Sklep',
+							link:'/'
+						},
+						{
+							name:'Zrealizuj voucher'
+						}
+					]
+				}
+			},
+			{
+				path: '/regulamin',
+				component: regulamin,
+				meta: {
+					breadcrumb:[
+						{
+							name:'Sklep',
+							link:'/'
+						},
+						{
+							name:'Regulamin'
+						}
+					]
+				}
+			},
+			{
+				path: '/',
+				component: sklep,
+				meta: {
+					breadcrumb:[
+						{
+							name:'Sklep',
+							link:'/'
+						},
+						{
+							name:'Serwery'
+						}
+					]
+				}
+			}
 		]
 	})
 	const app = new Vue({
-		router
+		router,
+		data () {
+			return {
+				breadcrumbList: []
+			}
+		},
+		mounted: function() { this.updateList() },
+		watch: {'$route': function(){ this.updateList() } },
+		methods: {
+			routeTo (pRouteTo) {
+				if (this.breadcrumbList[pRouteTo].link) this.$router.push(this.breadcrumbList[pRouteTo].link)
+			},
+			updateList(){
+				this.breadcrumbList=this.$route.meta.breadcrumb
+			}
+		}
 	}).$mount('#app')
-	</script>
+</script>
 </body>
 </html>
