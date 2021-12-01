@@ -10,13 +10,13 @@
 
 		<div id="navbarBasicExample" class="navbar-menu" v-bind:class="{ 'is-active' : showNav }">
 			<div class="navbar-start">
-				<router-link to="/" class="navbar-item">
+				<router-link :to="{name:'shop',params: {shop:$route.params.shop}}" class="navbar-item">
 					Sklep
 				</router-link>
-				<router-link to="/regulamin" class="navbar-item">
+				<router-link :to="{name:'regulamin',params: {shop:$route.params.shop}}" class="navbar-item">
 					Regulamin
 				</router-link>
-				<router-link to="/voucher" class="navbar-item">
+				<router-link :to="{name:'voucher',params: {shop:$route.params.shop}}" class="navbar-item">
 					Zrealizuj voucher
 				</router-link>
 			</div>

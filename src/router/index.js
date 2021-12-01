@@ -1,17 +1,45 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-import Regulamin from "../components/Regulamin.vue";
-import Sklep from "../components/Sklep.vue";
+import Rules from "../components/Rules.vue";
+import Servers from "../components/Servers.vue";
 import Voucher from "../components/Voucher.vue";
+import Main from "../components/Main.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
 	{
-		path: '/voucher',
-		component: Voucher,
+		path: '/',
+		component: Main,
+		name: 'main',
+		meta:{
+			shopFrame: false
+		}
+	},
+	{
+		path: '/shop/:shopid/',
+		component: Servers,
+		name: 'shop',
 		meta: {
+			shopFrame: true,
+			breadcrumb:[
+				{
+					name:'Sklep',
+					link:'/'
+				},
+				{
+					name:'Serwery'
+				}
+			]
+		}
+	},
+	{
+		path: '/shop/:shopid/voucher',
+		component: Voucher,
+		name: 'voucher',
+		meta: {
+			shopFrame: true,
 			breadcrumb:[
 				{
 					name:'Sklep',
@@ -24,9 +52,11 @@ const routes = [
 		}
 	},
 	{
-		path: '/regulamin',
-		component: Regulamin,
+		path: '/shop/:shopid/regulamin',
+		name: 'regulamin',
+		component: Rules,
 		meta: {
+			shopFrame: true,
 			breadcrumb:[
 				{
 					name:'Sklep',
@@ -37,22 +67,8 @@ const routes = [
 				}
 			]
 		}
-	},
-	{
-		path: '/',
-		component: Sklep,
-		meta: {
-			breadcrumb:[
-				{
-					name:'Sklep',
-					link:'/'
-				},
-				{
-					name:'Serwery'
-				}
-			]
-		}
 	}
+
 ]
 
 const router = new VueRouter({

@@ -6,7 +6,7 @@ const path = require("path");
 module.exports = {
 	entry: {
 		main: "./src/main.js",
-		style: "./css/style.scss"
+		style: "./styles/style.scss"
 	},
 	output: {
 		path: path.resolve(__dirname, "dist"),
