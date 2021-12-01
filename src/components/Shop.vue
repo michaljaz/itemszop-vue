@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<router-link to="/" >
+		<router-link :to="{name:'shop'}" >
 			<h1 class="title mt-5 mb-2">
 				ItemSzop
 			</h1>
