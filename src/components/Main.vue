@@ -4,7 +4,7 @@
 		<router-link to="/shop/test" class="button is-link">
 			Przykładowy sklep
 		</router-link>
-		<router-link to="/panel" class="button is-primary">
+		<router-link to="/auth/signin" class="button is-primary">
 			Panel administracyjny
 		</router-link>
 	</div>

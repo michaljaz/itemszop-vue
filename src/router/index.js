@@ -6,7 +6,9 @@ import Voucher from "../components/Voucher.vue";
 import Main from "../components/Main.vue";
 import Shop from "../components/Shop.vue";
 import PageNotFound from "../components/PageNotFound.vue"
-import Panel from '../components/Panel.vue'
+import PanelAuth from '../components/PanelAuth.vue'
+import PanelSignIn from '../components/PanelSignIn.vue'
+import PanelSignUp from '../components/PanelSignUp.vue'
 
 Vue.use(VueRouter);
 
@@ -17,8 +19,20 @@ const routes = [
 		name: 'main'
 	},
 	{
-		path: '/panel',
-		component: Panel,
+		path: '/auth',
+		component: PanelAuth,
+		children:[
+			{
+				path:'signin',
+				component: PanelSignIn,
+				name:'signin'
+			},
+			{
+				path:'signup',
+				component: PanelSignUp,
+				name:'signup'
+			}
+		]
 	},
 	{
 		path:'/shop/:shopid',
