@@ -28,7 +28,7 @@ const routes = [
 					breadcrumb:[
 						{
 							name:'Sklep',
-							link:'/'
+							link:'.'
 						},
 						{
 							name:'Serwery'
@@ -44,7 +44,7 @@ const routes = [
 					breadcrumb:[
 						{
 							name:'Sklep',
-							link:'/'
+							link:{name:'shop'}
 						},
 						{
 							name:'Zrealizuj voucher'
@@ -60,7 +60,7 @@ const routes = [
 					breadcrumb:[
 						{
 							name:'Sklep',
-							link:'/'
+							link:{name:'shop'}
 						},
 						{
 							name:'Regulamin'
