@@ -1,12 +1,12 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-
 import Rules from "../components/Rules.vue";
 import Servers from "../components/Servers.vue";
 import Voucher from "../components/Voucher.vue";
 import Main from "../components/Main.vue";
 import Shop from "../components/Shop.vue";
 import PageNotFound from "../components/PageNotFound.vue"
+import Panel from '../components/Panel.vue'
 
 Vue.use(VueRouter);
 
@@ -15,6 +15,10 @@ const routes = [
 		path: '/',
 		component: Main,
 		name: 'main'
+	},
+	{
+		path: '/panel',
+		component: Panel,
 	},
 	{
 		path:'/shop/:shopid',
@@ -28,7 +32,7 @@ const routes = [
 					breadcrumb:[
 						{
 							name:'Sklep',
-							link:'.'
+							link:{name:'shop'}
 						},
 						{
 							name:'Serwery'

@@ -1,6 +1,5 @@
 <template>
 	<div>
-		<h1>Voucher</h1>
 		<div class="content">
 			Vouchery można zdobywać w eventach lub przez aktywność na serwerze.
 		</div>
