@@ -30,6 +30,9 @@
 	</div>
 </template>
 <script>
+import auth from "../assets/js/firebaseAuth.js"
+import {signInWithEmailAndPassword} from "firebase/auth"
+
 export default {
 	data () {
 		return {
@@ -39,7 +42,12 @@ export default {
 	},
 	methods:{
 		signIn (){
-			console.log(this._data.email,this._data.password)
+			const {email,password} = this._data
+			signInWithEmailAndPassword(auth,email,password)
+			.then((response)=>{
+				const {user}=response
+				console.log(user)
+			})
 		}
 	}
 }
