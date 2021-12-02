@@ -36,9 +36,34 @@ Vue.prototype.$auth = auth;
 Vue.prototype.$errorCodes = errorCodes;
 Vue.config.productionTip = false;
 
+let waitForConnect=true
+
 auth.onAuthStateChanged(user => {
+	waitForConnect=false
   store.dispatch("fetchUser", user);
-});
+})
+
+router.beforeEach((to,from,next)=>{
+	const fun=()=>{
+		if(to.meta.requiresAuth && !store.getters.user.loggedIn){
+			next({name:'signin'})
+		}else if(to.meta.redirectToPanel && store.getters.user.loggedIn){
+			next({name:'panel'})
+		}else{
+			next()
+		}
+	}
+	if(!waitForConnect){
+		fun()
+	}else{
+		const int=setInterval(()=>{
+			if(!waitForConnect){
+				fun()
+				clearInterval(int)
+			}
+		},100)
+	}
+})
 
 new Vue({
 	router,

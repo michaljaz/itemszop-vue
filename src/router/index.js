@@ -22,7 +22,10 @@ const routes = [
 	{
 		path: '/panel',
 		component: Panel,
-		name: 'panel'
+		name: 'panel',
+		meta:{
+			requiresAuth:true
+		}
 	},
 	{
 		path: '/auth',
@@ -31,12 +34,18 @@ const routes = [
 			{
 				path:'signin',
 				component: PanelSignIn,
-				name:'signin'
+				name:'signin',
+				meta:{
+					redirectToPanel:true
+				},
 			},
 			{
 				path:'signup',
 				component: PanelSignUp,
-				name:'signup'
+				name:'signup',
+				meta:{
+					redirectToPanel:true
+				},
 			}
 		]
 	},
