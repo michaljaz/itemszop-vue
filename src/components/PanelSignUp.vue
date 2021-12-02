@@ -11,28 +11,28 @@
 			<div class="field">
 				<label class="label">Email</label>
 				<div class="control">
-					<input class="input" type="email" placeholder="np. alex@example.com" v-model="email">
+					<input class="input" name="email" type="email" placeholder="np. alex@example.com" v-model="email">
 				</div>
 			</div>
 
 			<div class="field">
 				<label class="label">Pseudonim</label>
 				<div class="control">
-					<input class="input" type="text" placeholder="" v-model="displayName">
+					<input class="input" name="nickname" type="text" placeholder="" v-model="displayName">
 				</div>
 			</div>
 
 			<div class="field">
 				<label class="label">Hasło</label>
 				<div class="control">
-					<input class="input" type="password" placeholder="********" v-model="password">
+					<input class="input" name="password" type="password" placeholder="********" v-model="password">
 				</div>
 			</div>
 
 			<div class="field">
 				<label class="label">Powtórz Hasło</label>
 				<div class="control">
-					<input class="input" type="password" placeholder="********" v-model="password_repeat">
+					<input class="input" name="confirm_password" type="password" placeholder="********" v-model="confirm_password">
 				</div>
 			</div>
 
@@ -57,20 +57,20 @@ export default {
 		return {
 			email:"",
 			password:"",
-			password_repeat:"",
+			confirm_password:"",
 			displayName:"",
 			error:""
 		}
 	},
 	methods:{
 		submit (){
-			const {email,password,password_repeat,displayName} = this._data
-			if(password!==password_repeat){
+			const {email,password,confirm_password,displayName} = this
+			if(password!==confirm_password){
 				this.error = "Hasła do siebie nie pasują.";
 			}else if(password.length==0){
 				this.error = "Nie możesz wysłać pustego hasła."
 			}else{
-				createUserWithEmailAndPassword(this.$auth,email,password)
+				createUserWithEmailAndPassword(this.$auth,email,confirm_password)
 				.then((response)=>{
 					const {user}=response
 					updateProfile(user,{displayName})

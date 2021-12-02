@@ -11,14 +11,14 @@
 			<div class="field">
 				<label class="label">Email</label>
 				<div class="control">
-					<input class="input" type="email" placeholder="np. alex@example.com" v-model="email">
+					<input class="input" name="email" type="email" placeholder="np. alex@example.com" v-model="email">
 				</div>
 			</div>
 
 			<div class="field">
 				<label class="label">Hasło</label>
 				<div class="control">
-					<input class="input" type="password" placeholder="********" v-model="password">
+					<input class="input" name="password" type="password" placeholder="********" v-model="password">
 				</div>
 			</div>
 
