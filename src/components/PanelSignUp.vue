@@ -50,18 +50,7 @@
 	</div>
 </template>
 <script>
-import auth from "../assets/js/firebaseAuth.js"
 import {createUserWithEmailAndPassword,updateProfile} from "firebase/auth"
-
-var errorCodes={
-	"auth/invalid-email":"Email jest źle sformatowany.",
-	"auth/wrong-password":"Złe hasło.",
-	"auth/network-request-failed":"Brak połączenia z internetem.",
-	"auth/user-not-found":"Nie znaleziono użytkownika o podanym identyfikatorze.",
-	"auth/too-many-requests":"Dostęp do konta został tymczasowo zablokowany ze względu na dużą liczbę nieudanych prób logowań. Możesz od razu je odblokować resetując hasło.",
-	"auth/email-already-in-use":"Email jest już w użyciu.",
-	"auth/weak-password":"Zbyt słabe hasło (powinno mieć co najmniej 6 znaków)."
-}
 
 export default {
 	data () {
@@ -77,22 +66,22 @@ export default {
 		submit (){
 			const {email,password,password_repeat,displayName} = this._data
 			if(password!==password_repeat){
-				this.error = "Hasła do siebie nie pasują";
+				this.error = "Hasła do siebie nie pasują.";
 			}else if(password.length==0){
-				this.error = "Nie możesz wysłać pustego hasła"
+				this.error = "Nie możesz wysłać pustego hasła."
 			}else{
-				createUserWithEmailAndPassword(auth,email,password)
+				createUserWithEmailAndPassword(this.$auth,email,password)
 				.then((response)=>{
 					const {user}=response
 					updateProfile(user,{displayName})
 					.then(()=>{
-						console.log(user)
+						this.$router.replace({ name: "panel" });
 					})
 					this.error = ""
 				})
 				.catch(err => {
 					console.log(err)
-					this.error = errorCodes[err.code] || err.message;
+					this.error = this.$errorCodes[err.code] || err.message;
 				});
 			}
 

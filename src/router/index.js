@@ -9,6 +9,7 @@ import PageNotFound from "../components/PageNotFound.vue"
 import PanelAuth from '../components/PanelAuth.vue'
 import PanelSignIn from '../components/PanelSignIn.vue'
 import PanelSignUp from '../components/PanelSignUp.vue'
+import Panel from '../components/Panel.vue'
 
 Vue.use(VueRouter);
 
@@ -17,6 +18,11 @@ const routes = [
 		path: '/',
 		component: Main,
 		name: 'main'
+	},
+	{
+		path: '/panel',
+		component: Panel,
+		name: 'panel'
 	},
 	{
 		path: '/auth',
