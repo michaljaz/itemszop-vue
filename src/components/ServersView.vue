@@ -1,3 +1,3 @@
 <template>
-	<h1>Sklep</h1>
+  <h1>Sklep</h1>
 </template>

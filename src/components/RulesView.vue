@@ -1,3 +1,3 @@
 <template>
-	<h1>Regulamin</h1>
+  <h1>Regulamin</h1>
 </template>
