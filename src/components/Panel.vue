@@ -5,6 +5,8 @@
 	</div>
 </template>
 <script>
+import { ref, onValue } from 'firebase/database';
+
 export default {
 	methods:{
 		signOut() {
@@ -15,6 +17,12 @@ export default {
 				});
 			})
     }
+	},
+	mounted() {
+		const r=ref(this.$database)
+		onValue(r,(snapshot)=>{
+			console.log(snapshot.val())
+		})
 	}
 }
 </script>

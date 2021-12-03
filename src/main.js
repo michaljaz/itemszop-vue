@@ -8,6 +8,7 @@ import router from "./router";
 import store from "./store";
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
+import { getDatabase } from 'firebase/database';
 
 const app=initializeApp({
 	apiKey: "AIzaSyAgqotnCT9d_zcmwrE8mHWiC9JL8r75U-s",
@@ -30,15 +31,13 @@ var errorCodes={
 	"auth/missing-email":"Nie wpisałeś adresu email."
 }
 
-const auth=getAuth(app)
-
-Vue.prototype.$auth = auth;
+Vue.prototype.$auth = getAuth(app)
+Vue.prototype.$database = getDatabase(app)
 Vue.prototype.$errorCodes = errorCodes;
 Vue.config.productionTip = false;
 
 let waitForConnect=true
-
-auth.onAuthStateChanged(user => {
+Vue.prototype.$auth.onAuthStateChanged(user => {
 	waitForConnect=false
   store.dispatch("fetchUser", user);
 })
