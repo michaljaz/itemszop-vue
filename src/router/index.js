@@ -1,15 +1,18 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import RulesView from '../components/RulesView.vue'
-import ServersView from '../components/ServersView.vue'
-import VoucherView from '../components/VoucherView.vue'
+//main
 import MainPage from '../components/MainPage.vue'
-import Shop from '../components/Shop.vue'
 import PageNotFound from '../components/PageNotFound.vue'
-import PanelAuth from '../components/PanelAuth.vue'
-import PanelSignIn from '../components/PanelSignIn.vue'
-import PanelSignUp from '../components/PanelSignUp.vue'
-import PanelDashboard from '../components/PanelDashboard.vue'
+//shop
+import RulesView from '../components/shop/RulesView.vue'
+import ServersView from '../components/shop/ServersView.vue'
+import VoucherView from '../components/shop/VoucherView.vue'
+import Shop from '../components/shop/Shop.vue'
+//panel
+import PanelAuth from '../components/panel/PanelAuth.vue'
+import PanelSignIn from '../components/panel/PanelSignIn.vue'
+import PanelSignUp from '../components/panel/PanelSignUp.vue'
+import PanelDashboard from '../components/panel/PanelDashboard.vue'
 
 Vue.use(VueRouter)
 
