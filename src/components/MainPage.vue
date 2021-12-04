@@ -1,11 +1,64 @@
 <template>
   <div>
-    <h1 class="title mt-5">ItemSzop</h1>
-    <router-link to="/shop/test" class="button is-link">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item">
+          <strong> ItemSzop </strong>
+        </a>
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="https://discord.com/invite/MDQXz3TCPb">
+            Discord
+          </a>
+          <a class="navbar-item" href="https://github.com/michaljaz/itemszop">
+            Github
+          </a>
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <div v-if="!user.loggedIn">
+                <router-link to="/auth/signup" class="button is-primary">
+                  <strong>Zarejestruj się</strong>
+                </router-link>
+                <router-link to="/auth/signin" class="button is-light">
+                  Zaloguj się
+                </router-link>
+              </div>
+              <div v-else>
+                <router-link to="/panel" class="button is-primary">
+                  Przejdź do Panelu
+                </router-link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <router-link to="/shop/test" class="button is-info mt-5">
       Przykładowy sklep
-    </router-link>
-    <router-link to="/auth/signin" class="button is-primary">
-      Panel administracyjny
     </router-link>
   </div>
 </template>
+<script>
+import { mapGetters } from 'vuex'
+export default {
+  computed: {
+    ...mapGetters({
+      user: 'user',
+    }),
+  },
+}
+</script>
