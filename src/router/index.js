@@ -13,6 +13,7 @@ import PanelAuth from '../components/auth/PanelAuth.vue'
 import SignIn from '../components/auth/SignIn.vue'
 import SignUp from '../components/auth/SignUp.vue'
 import RecoverAccount from '../components/auth/RecoverAccount.vue'
+import NotVerified from '../components/auth/NotVerified.vue'
 //panel
 import PanelDashboard from '../components/panel/PanelDashboard.vue'
 
@@ -56,9 +57,11 @@ const routes = [
         path: 'recover',
         component: RecoverAccount,
         name: 'recover',
-        meta: {
-          redirectToPanel: true,
-        },
+      },
+      {
+        path: 'notverified',
+        component: NotVerified,
+        name: 'notverified',
       },
     ],
   },

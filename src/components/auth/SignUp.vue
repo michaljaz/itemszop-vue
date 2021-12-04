@@ -76,7 +76,11 @@
   </div>
 </template>
 <script>
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
+import {
+  createUserWithEmailAndPassword,
+  updateProfile,
+  sendEmailVerification,
+} from 'firebase/auth'
 
 export default {
   data() {
@@ -100,7 +104,13 @@ export default {
           .then((response) => {
             const { user } = response
             updateProfile(user, { displayName }).then(() => {
-              this.$router.replace({ name: 'panel' })
+              sendEmailVerification(user)
+                .then(() => {
+                  this.$router.replace({ name: 'panel' })
+                })
+                .catch(() => {
+                  this.error = 'Nie udało się wysłać maila weryfikacyjnego'
+                })
             })
             this.error = ''
           })

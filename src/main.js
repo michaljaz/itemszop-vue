@@ -35,6 +35,7 @@ const errorCodes = {
 
 Vue.prototype.$auth = getAuth(app)
 Vue.prototype.$database = getDatabase(app)
+Vue.prototype.$user = null
 Vue.prototype.$errorCodes = errorCodes
 Vue.config.productionTip = false
 
@@ -42,12 +43,22 @@ let waitForConnect = true
 Vue.prototype.$auth.onAuthStateChanged((user) => {
   waitForConnect = false
   store.dispatch('fetchUser', user)
+  Vue.prototype.$user = user
 })
 
 router.beforeEach((to, from, next) => {
   const fun = () => {
-    if (to.meta.requiresAuth && !store.getters.user.loggedIn) {
-      next({ name: 'signin' })
+    if (to.meta.requiresAuth) {
+      //if panel-like view
+      if (!store.getters.user.loggedIn) {
+        //if not logged in
+        next({ name: 'signin' })
+      } else if (!store.getters.user.data.emailVerified) {
+        //if email not verified
+        next({ name: 'notverified' })
+      } else {
+        next()
+      }
     } else if (to.meta.redirectToPanel && store.getters.user.loggedIn) {
       next({ name: 'panel' })
     } else {
