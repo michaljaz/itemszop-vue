@@ -34,7 +34,9 @@
         </div>
       </div>
 
-      <div class="columns">
+      <router-link to="/auth/recover"> Nie pamiętam hasła </router-link>
+
+      <div class="columns mt-1">
         <div class="column">
           <button class="button is-primary is-fullwidth" type="submit">
             Dalej

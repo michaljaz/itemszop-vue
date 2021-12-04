@@ -8,10 +8,12 @@ import RulesView from '../components/shop/RulesView.vue'
 import ServersView from '../components/shop/ServersView.vue'
 import VoucherView from '../components/shop/VoucherView.vue'
 import Shop from '../components/shop/Shop.vue'
+//auth
+import PanelAuth from '../components/auth/PanelAuth.vue'
+import SignIn from '../components/auth/SignIn.vue'
+import SignUp from '../components/auth/SignUp.vue'
+import RecoverAccount from '../components/auth/RecoverAccount.vue'
 //panel
-import PanelAuth from '../components/panel/PanelAuth.vue'
-import PanelSignIn from '../components/panel/PanelSignIn.vue'
-import PanelSignUp from '../components/panel/PanelSignUp.vue'
 import PanelDashboard from '../components/panel/PanelDashboard.vue'
 
 Vue.use(VueRouter)
@@ -36,7 +38,7 @@ const routes = [
     children: [
       {
         path: 'signin',
-        component: PanelSignIn,
+        component: SignIn,
         name: 'signin',
         meta: {
           redirectToPanel: true,
@@ -44,8 +46,16 @@ const routes = [
       },
       {
         path: 'signup',
-        component: PanelSignUp,
+        component: SignUp,
         name: 'signup',
+        meta: {
+          redirectToPanel: true,
+        },
+      },
+      {
+        path: 'recover',
+        component: RecoverAccount,
+        name: 'recover',
         meta: {
           redirectToPanel: true,
         },
