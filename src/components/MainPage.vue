@@ -10,14 +10,20 @@
           class="navbar-burger"
           aria-label="menu"
           aria-expanded="false"
+          v-on:click="showNav = !showNav"
           data-target="navbarBasicExample"
+          v-bind:class="{ 'is-active': showNav }"
         >
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </a>
       </div>
-      <div id="navbarBasicExample" class="navbar-menu">
+      <div
+        id="navbarBasicExample"
+        class="navbar-menu"
+        v-bind:class="{ 'is-active': showNav }"
+      >
         <div class="navbar-start">
           <a class="navbar-item" href="https://discord.com/invite/MDQXz3TCPb">
             Discord
@@ -55,6 +61,11 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
+  data() {
+    return {
+      showNav: false,
+    }
+  },
   computed: {
     ...mapGetters({
       user: 'user',
