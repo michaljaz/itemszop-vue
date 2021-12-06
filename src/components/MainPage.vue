@@ -10,8 +10,8 @@
           class="navbar-burger"
           aria-label="menu"
           aria-expanded="false"
-          v-on:click="showNav = !showNav"
           data-target="navbarBasicExample"
+          v-on:click="showNav = !showNav"
           v-bind:class="{ 'is-active': showNav }"
         >
           <span aria-hidden="true"></span>
