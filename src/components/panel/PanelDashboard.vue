@@ -29,13 +29,15 @@
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link"> Twoje sklepy </a>
             <div class="navbar-dropdown">
-              <a
-                class="navbar-item"
-                v-for="item in shops"
-                :key="item"
-              >
-                {{ item }}
-              </a>
+							<div v-if="shops">
+	              <a
+	                class="navbar-item"
+	                v-for="item in shops"
+	                :key="item"
+	              >
+	                {{ item }}
+	              </a>
+							</div>
             </div>
           </div>
         </div>
@@ -78,8 +80,10 @@ export default {
     const shops_ref = child(root_ref, `users/${uid}`)
     onValue(shops_ref, (snapshot) => {
 			const shops=snapshot.val()
-			delete shops[0]
-      this.shops = Object.keys(shops)
+			if(shops){
+				delete shops[0]
+	      this.shops = Object.keys(shops)
+			}
     })
   },
 }
