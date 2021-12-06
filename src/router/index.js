@@ -4,12 +4,12 @@ import VueRouter from 'vue-router'
 import MainPage from '../components/MainPage.vue'
 import PageNotFound from '../components/PageNotFound.vue'
 //shop
+import BaseShop from '../components/shop/BaseShop.vue'
 import RulesView from '../components/shop/RulesView.vue'
 import ServersView from '../components/shop/ServersView.vue'
 import VoucherView from '../components/shop/VoucherView.vue'
-import Shop from '../components/shop/Shop.vue'
 //auth
-import PanelAuth from '../components/auth/PanelAuth.vue'
+import BaseAuth from '../components/auth/BaseAuth.vue'
 import SignIn from '../components/auth/SignIn.vue'
 import SignUp from '../components/auth/SignUp.vue'
 import RecoverAccount from '../components/auth/RecoverAccount.vue'
@@ -35,7 +35,7 @@ const routes = [
   },
   {
     path: '/auth',
-    component: PanelAuth,
+    component: BaseAuth,
     children: [
       {
         path: 'signin',
@@ -67,7 +67,7 @@ const routes = [
   },
   {
     path: '/shop/:shopid',
-    component: Shop,
+    component: BaseShop,
     children: [
       {
         path: '/',

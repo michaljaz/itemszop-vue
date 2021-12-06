@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-				<a class="navbar-item">
+        <a class="navbar-item">
           <strong> ItemSzop </strong>
         </a>
         <a
@@ -29,7 +29,11 @@
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link"> Twoje sklepy </a>
             <div class="navbar-dropdown">
-              <a class="navbar-item" v-for="item in shops" :key="item">
+              <a
+                class="navbar-item"
+                v-for="item in shops"
+                :key="item"
+              >
                 {{ item }}
               </a>
             </div>
@@ -73,7 +77,9 @@ export default {
     const root_ref = ref(this.$database)
     const shops_ref = child(root_ref, `users/${uid}`)
     onValue(shops_ref, (snapshot) => {
-      this.shops = Object.keys(snapshot.val())
+			const shops=snapshot.val()
+			delete shops[0]
+      this.shops = Object.keys(shops)
     })
   },
 }
