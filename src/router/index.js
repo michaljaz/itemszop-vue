@@ -15,7 +15,9 @@ import SignUp from '../components/auth/SignUp.vue'
 import RecoverAccount from '../components/auth/RecoverAccount.vue'
 import NotVerified from '../components/auth/NotVerified.vue'
 //panel
-import PanelDashboard from '../components/panel/PanelDashboard.vue'
+import BasePanel from '../components/panel/BasePanel.vue'
+import ShopPanel from '../components/panel/ShopPanel.vue'
+import ShopsList from '../components/panel/ShopsList.vue'
 
 Vue.use(VueRouter)
 
@@ -27,11 +29,25 @@ const routes = [
   },
   {
     path: '/panel',
-    component: PanelDashboard,
-    name: 'panel',
-    meta: {
-      requiresAuth: true,
-    },
+    component: BasePanel,
+    children: [
+      {
+        path: '/',
+        component: ShopsList,
+        name: 'panel',
+        meta: {
+          requiresAuth: true,
+        },
+      },
+      {
+        path: '/shop/:shopid',
+        component: ShopPanel,
+        name: 'shop_panel',
+        meta: {
+          requiresAuth: true,
+        },
+      },
+    ],
   },
   {
     path: '/auth',

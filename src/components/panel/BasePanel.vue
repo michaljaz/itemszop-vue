@@ -2,9 +2,9 @@
   <div>
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item">
+        <router-link to="/panel" class="navbar-item">
           <strong> ItemSzop </strong>
-        </a>
+        </router-link>
         <a
           role="button"
           class="navbar-burger"
@@ -29,15 +29,16 @@
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link"> Twoje sklepy </a>
             <div class="navbar-dropdown">
-							<div v-if="shops">
-	              <a
-	                class="navbar-item"
-	                v-for="item in shops"
-	                :key="item"
-	              >
-	                {{ item }}
-	              </a>
-							</div>
+              <div v-if="shops">
+                <router-link
+                  class="navbar-item"
+                  v-for="item in shops"
+                  :key="item"
+                  :to="{ name: 'shop_panel', params: { shopid: item } }"
+                >
+                  {{ item }}
+                </router-link>
+              </div>
             </div>
           </div>
         </div>
@@ -53,6 +54,7 @@
         </div>
       </div>
     </nav>
+    <router-view />
   </div>
 </template>
 <script>
@@ -79,11 +81,11 @@ export default {
     const root_ref = ref(this.$database)
     const shops_ref = child(root_ref, `users/${uid}`)
     onValue(shops_ref, (snapshot) => {
-			const shops=snapshot.val()
-			if(shops){
-				delete shops[0]
-	      this.shops = Object.keys(shops)
-			}
+      const shops = snapshot.val()
+      if (shops) {
+        delete shops[0]
+        this.shops = Object.keys(shops)
+      }
     })
   },
 }
