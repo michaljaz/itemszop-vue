@@ -27,7 +27,12 @@
       >
         <div class="navbar-start">
           <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link"> Twoje sklepy </a>
+            <a class="navbar-link">
+              <span v-if="this.$route.params.shopid">
+                {{ this.$route.params.shopid }}
+              </span>
+              <span v-else> Twoje sklepy </span>
+            </a>
             <div class="navbar-dropdown">
               <div v-if="shops">
                 <router-link
