@@ -18,6 +18,7 @@ import NotVerified from '../components/auth/NotVerified.vue'
 import BasePanel from '../components/panel/BasePanel.vue'
 import ShopPanel from '../components/panel/ShopPanel.vue'
 import ShopsList from '../components/panel/ShopsList.vue'
+import NewShop from '../components/panel/NewShop.vue'
 
 Vue.use(VueRouter)
 
@@ -35,6 +36,14 @@ const routes = [
         path: '/',
         component: ShopsList,
         name: 'panel',
+        meta: {
+          requiresAuth: true,
+        },
+      },
+			{
+        path: '/new_shop',
+        component: NewShop,
+        name: 'new_shop',
         meta: {
           requiresAuth: true,
         },
