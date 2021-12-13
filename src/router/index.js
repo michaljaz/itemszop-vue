@@ -41,7 +41,7 @@ const routes = [
         },
       },
 			{
-        path: '/new_shop',
+        path: 'new_shop',
         component: NewShop,
         name: 'new_shop',
         meta: {
@@ -49,7 +49,7 @@ const routes = [
         },
       },
       {
-        path: '/shop/:shopid',
+        path: 'shop/:shopid',
         component: ShopPanel,
         name: 'shop_panel',
         meta: {
