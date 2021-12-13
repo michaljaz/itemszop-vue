@@ -31,6 +31,8 @@
   </div>
 </template>
 <script>
+import { ref, update, child } from 'firebase/database'
+
 export default {
   data() {
     return {
@@ -41,8 +43,16 @@ export default {
   },
   methods: {
     create() {
-      console.log('Creating shop')
       console.log(this.name, this.shopid)
+      const { uid } = this.$user
+      const user_ref = child(ref(this.$database), `users/${uid}`)
+      update(user_ref, { [this.shopid]: true })
+        .then((r) => {
+          console.log(r)
+        })
+        .catch((r) => {
+          console.error(r)
+        })
     },
   },
 }
