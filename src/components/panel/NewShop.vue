@@ -4,15 +4,20 @@
     <div class="field">
       <label class="label">Nazwa sklepu</label>
       <div class="control">
-        <input class="input" type="text" placeholder="np. server.eu" />
+        <input
+          class="input"
+          type="text"
+          placeholder="np. server.eu"
+          v-model="name"
+        />
       </div>
     </div>
     <div class="field">
-      <label class="label"
-        >Id sklepu (Będzie występować w linku: https://{{ host }}#/shop/{{
+      <label class="label">
+        Id sklepu (Będzie występować w linku: https://{{ host }}#/shop/{{
           shopid
-        }})</label
-      >
+        }})
+      </label>
       <div class="control">
         <input
           class="input"
@@ -22,15 +27,23 @@
         />
       </div>
     </div>
+    <button class="button is-success" @click="create()">Dalej</button>
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
+      name: '',
       shopid: '',
       host: document.location.host,
     }
+  },
+  methods: {
+    create() {
+      console.log('Creating shop')
+      console.log(this.name, this.shopid)
+    },
   },
 }
 </script>
