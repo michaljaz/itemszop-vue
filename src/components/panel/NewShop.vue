@@ -8,7 +8,7 @@
 			</div>
 		</div>
 		<div class="field">
-			<label class="label">Id sklepu (Będzie występować w linku: https://itemszop.js.org#/shop/{{ shopid }})</label>
+			<label class="label">Id sklepu (Będzie występować w linku: https://{{ host }}#/shop/{{ shopid }})</label>
 			<div class="control">
 				<input class="input" type="text" placeholder="Minimum 4 znaki" v-model="shopid">
 			</div>
@@ -19,7 +19,8 @@
 export default {
   data() {
     return {
-      shopid:""
+      shopid:"",
+			host:document.location.host
     }
   }
 }
