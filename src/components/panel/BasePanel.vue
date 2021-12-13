@@ -39,7 +39,7 @@
                   class="navbar-item"
                   v-for="item in shops"
                   :key="item"
-                  :to="{ name: 'shop_panel', params: { shopid: item } }"
+                  :to="{ name: 'shop_main', params: { shopid: item } }"
                 >
                   {{ item }}
                 </router-link>

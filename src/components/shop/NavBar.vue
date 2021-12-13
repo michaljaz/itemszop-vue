@@ -22,16 +22,12 @@
       v-bind:class="{ 'is-active': showNav }"
     >
       <div class="navbar-start">
-        <router-link
-          :to="{ name: 'shop', params: { shop: $route.params.shop } }"
-          class="navbar-item"
-        >
+        <router-link :to="{ name: 'shop' }" class="navbar-item">
           Sklep
         </router-link>
         <router-link
           :to="{
             name: 'regulamin',
-            params: { shop: $route.params.shop },
           }"
           class="navbar-item"
         >
@@ -40,7 +36,6 @@
         <router-link
           :to="{
             name: 'voucher',
-            params: { shop: $route.params.shop },
           }"
           class="navbar-item"
         >

@@ -53,6 +53,7 @@ export default {
         this.error =
           'Nieprawidłowy format "id sklepu": powinien mieć minimum 4 znaki - litery lub cyfry'
       } else {
+        this.error = ''
         const { uid } = this.$user
         const user_ref = child(ref(this.$database), `users/${uid}`)
         update(user_ref, { [shopid]: true })
