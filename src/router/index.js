@@ -1,24 +1,24 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 //main
-import MainPage from '../components/MainPage.vue'
-import PageNotFound from '../components/PageNotFound.vue'
+import MainPage from '../components/MainPage'
+import PageNotFound from '../components/PageNotFound'
 //shop
-import BaseShop from '../components/shop/BaseShop.vue'
-import RulesView from '../components/shop/RulesView.vue'
-import ServersView from '../components/shop/ServersView.vue'
-import VoucherView from '../components/shop/VoucherView.vue'
+import BaseShop from '../components/shop/BaseShop'
+import RulesView from '../components/shop/RulesView'
+import ServersView from '../components/shop/ServersView'
+import VoucherView from '../components/shop/VoucherView'
 //auth
-import BaseAuth from '../components/auth/BaseAuth.vue'
-import SignIn from '../components/auth/SignIn.vue'
-import SignUp from '../components/auth/SignUp.vue'
-import RecoverAccount from '../components/auth/RecoverAccount.vue'
-import NotVerified from '../components/auth/NotVerified.vue'
+import BaseAuth from '../components/auth/BaseAuth'
+import SignIn from '../components/auth/SignIn'
+import SignUp from '../components/auth/SignUp'
+import RecoverAccount from '../components/auth/RecoverAccount'
+import NotVerified from '../components/auth/NotVerified'
 //panel
-import BasePanel from '../components/panel/BasePanel.vue'
-import ShopPanel from '../components/panel/ShopPanel.vue'
-import ShopsList from '../components/panel/ShopsList.vue'
-import NewShop from '../components/panel/NewShop.vue'
+import BasePanel from '../components/panel/BasePanel'
+import ShopPanel from '../components/panel/ShopPanel'
+import ShopsList from '../components/panel/ShopsList'
+import NewShop from '../components/panel/NewShop'
 
 Vue.use(VueRouter)
 
@@ -40,7 +40,7 @@ const routes = [
           requiresAuth: true,
         },
       },
-			{
+      {
         path: 'new_shop',
         component: NewShop,
         name: 'new_shop',

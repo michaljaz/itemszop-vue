@@ -44,10 +44,10 @@
                   {{ item }}
                 </router-link>
               </div>
-							<hr class="dropdown-divider">
-							<router-link class="navbar-item" :to="{name:'new_shop'}">
-								Utwórz nowy
-							</router-link>
+              <hr class="dropdown-divider" />
+              <router-link class="navbar-item" :to="{ name: 'new_shop' }">
+                Utwórz nowy
+              </router-link>
             </div>
           </div>
         </div>
