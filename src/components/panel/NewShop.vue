@@ -28,6 +28,10 @@
       </div>
     </div>
     <button class="button is-success" @click="create()">Dalej</button>
+    <div v-if="error" class="notification is-danger mt-2">
+      <button class="delete" @click="error = ''"></button>
+      {{ error }}
+    </div>
   </div>
 </template>
 <script>
@@ -39,20 +43,26 @@ export default {
       name: '',
       shopid: '',
       host: document.location.host,
+      error: '',
     }
   },
   methods: {
     create() {
-      console.log(this.name, this.shopid)
-      const { uid } = this.$user
-      const user_ref = child(ref(this.$database), `users/${uid}`)
-      update(user_ref, { [this.shopid]: true })
-        .then((r) => {
-          console.log(r)
-        })
-        .catch((r) => {
-          console.error(r)
-        })
+      const { shopid } = this
+      if (!this.$pregMatchAll(/^[A-Za-z0-9_]{4,}$/, shopid)) {
+        this.error =
+          'Nieprawidłowy format "id sklepu": powinien mieć minimum 4 znaki - litery lub cyfry'
+      } else {
+        const { uid } = this.$user
+        const user_ref = child(ref(this.$database), `users/${uid}`)
+        update(user_ref, { [shopid]: true })
+          .then((r) => {
+            console.log(r)
+          })
+          .catch((r) => {
+            console.error(r)
+          })
+      }
     },
   },
 }
