@@ -57,7 +57,7 @@ router.beforeEach((to, from, next) => {
         fun()
         clearInterval(int)
       }
-    }, 100)
+    })
   }
 })
 

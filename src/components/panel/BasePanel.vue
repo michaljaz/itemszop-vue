@@ -97,6 +97,18 @@ export default {
         })
       })
     },
+		checkIfShopExist() {
+			if(this.shops.length>0 && this.$route.params.shopid){
+				if(!this.shops.includes(this.$route.params.shopid)){
+					this.$router.replace({ name: 'panel' })
+				}
+			}
+		}
+  },
+	watch: {
+    $route() {
+			this.checkIfShopExist()
+    },
   },
   mounted() {
     const { uid } = this.$user
@@ -106,7 +118,9 @@ export default {
       const shops = snapshot.val()
       if (shops) {
         delete shops[0]
+				console.log()
         this.shops = Object.keys(shops)
+				this.checkIfShopExist()
       }
     })
   },
