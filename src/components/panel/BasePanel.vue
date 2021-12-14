@@ -55,7 +55,7 @@
         <div class="navbar-end">
 					<div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
-              <span> Nazwa konta </span>
+              <span> {{ user.data.displayName }} </span>
             </a>
             <div class="navbar-dropdown">
 							<router-link class="navbar-item" :to="{name:'panel_settings'}">
@@ -75,6 +75,7 @@
 </template>
 <script>
 import { ref, onValue, child } from 'firebase/database'
+import { mapGetters } from 'vuex'
 
 export default {
   data() {
@@ -82,6 +83,11 @@ export default {
       shops: [],
       showNav: false,
     }
+  },
+	computed: {
+    ...mapGetters({
+      user: 'user',
+    }),
   },
   methods: {
     signOut() {
