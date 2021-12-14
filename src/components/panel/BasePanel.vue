@@ -53,18 +53,16 @@
         </div>
 
         <div class="navbar-end">
-					<div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
               <span> {{ user.data.displayName }} </span>
             </a>
             <div class="navbar-dropdown">
-							<router-link class="navbar-item" :to="{name:'panel_settings'}">
-								Ustawienia
-							</router-link>
+              <router-link class="navbar-item" :to="{ name: 'panel_settings' }">
+                Ustawienia
+              </router-link>
               <hr class="dropdown-divider" />
-							<a class="navbar-item" @click="signOut()">
-								Wyloguj się
-							</a>
+              <a class="navbar-item" @click="signOut()"> Wyloguj się </a>
             </div>
           </div>
         </div>
@@ -84,7 +82,7 @@ export default {
       showNav: false,
     }
   },
-	computed: {
+  computed: {
     ...mapGetters({
       user: 'user',
     }),
@@ -97,17 +95,17 @@ export default {
         })
       })
     },
-		checkIfShopExist() {
-			if(this.shops.length>0 && this.$route.params.shopid){
-				if(!this.shops.includes(this.$route.params.shopid)){
-					this.$router.replace({ name: 'panel' })
-				}
-			}
-		}
+    checkIfShopExist() {
+      if (this.shops.length > 0 && this.$route.params.shopid) {
+        if (!this.shops.includes(this.$route.params.shopid)) {
+          this.$router.replace({ name: 'panel' })
+        }
+      }
+    },
   },
-	watch: {
+  watch: {
     $route() {
-			this.checkIfShopExist()
+      this.checkIfShopExist()
     },
   },
   mounted() {
@@ -118,9 +116,9 @@ export default {
       const shops = snapshot.val()
       if (shops) {
         delete shops[0]
-				console.log()
+        console.log()
         this.shops = Object.keys(shops)
-				this.checkIfShopExist()
+        this.checkIfShopExist()
       }
     })
   },

@@ -45,9 +45,9 @@ const routes = [
   {
     path: '/panel',
     component: BasePanel,
-		meta: {
-			requiresAuth: true,
-		},
+    meta: {
+      requiresAuth: true,
+    },
     children: [
       {
         path: '/',
@@ -59,7 +59,7 @@ const routes = [
         component: NewShop,
         name: 'new_shop',
       },
-			{
+      {
         path: 'settings',
         component: PanelSettings,
         name: 'panel_settings',

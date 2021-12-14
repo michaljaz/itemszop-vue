@@ -58,6 +58,7 @@ export default {
         const user_ref = child(ref(this.$database), `users/${uid}`)
         update(user_ref, { [shopid]: true })
           .then((r) => {
+            this.$router.replace({ name: 'shop_main', params: { shopid } })
             console.log(r)
           })
           .catch((r) => {
