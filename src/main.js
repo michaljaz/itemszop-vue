@@ -32,7 +32,7 @@ Vue.prototype.$auth.onAuthStateChanged((user) => {
 
 router.beforeEach((to, from, next) => {
   const fun = () => {
-    if (to.meta.requiresAuth) {
+    if (to.matched.some(record => record.meta.requiresAuth)) {
       //if panel-like view
       if (!store.getters.user.loggedIn) {
         //if not logged in

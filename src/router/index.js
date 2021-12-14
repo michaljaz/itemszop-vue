@@ -45,30 +45,24 @@ const routes = [
   {
     path: '/panel',
     component: BasePanel,
+		meta: {
+			requiresAuth: true,
+		},
     children: [
       {
         path: '/',
         component: ShopsList,
         name: 'panel',
-        meta: {
-          requiresAuth: true,
-        },
       },
       {
         path: 'new_shop',
         component: NewShop,
         name: 'new_shop',
-        meta: {
-          requiresAuth: true,
-        },
       },
 			{
         path: 'settings',
         component: PanelSettings,
         name: 'panel_settings',
-        meta: {
-          requiresAuth: true,
-        },
       },
       {
         path: 'shop/:shopid',
