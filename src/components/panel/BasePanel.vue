@@ -53,11 +53,18 @@
         </div>
 
         <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-              <button class="button is-danger" @click="signOut()">
-                Wyloguj się
-              </button>
+					<div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              <span> Nazwa konta </span>
+            </a>
+            <div class="navbar-dropdown">
+							<router-link class="navbar-item" :to="{name:'panel_settings'}">
+								Ustawienia
+							</router-link>
+              <hr class="dropdown-divider" />
+							<a class="navbar-item" @click="signOut()">
+								Wyloguj się
+							</a>
             </div>
           </div>
         </div>

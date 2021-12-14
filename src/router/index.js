@@ -23,6 +23,7 @@ import BasePanel from '../components/panel/BasePanel'
 import ShopPanel from '../components/panel/ShopPanel'
 import ShopsList from '../components/panel/ShopsList'
 import NewShop from '../components/panel/NewShop'
+import PanelSettings from '../components/panel/PanelSettings'
 
 import MainView from '../components/panel/shop/MainView'
 import PagesView from '../components/panel/shop/PagesView'
@@ -61,6 +62,14 @@ const routes = [
           requiresAuth: true,
         },
       },
+			{
+        path: 'settings',
+        component: PanelSettings,
+        name: 'panel_settings',
+        meta: {
+          requiresAuth: true,
+        },
+      },
       {
         path: 'shop/:shopid',
         component: ShopPanel,
@@ -86,7 +95,7 @@ const routes = [
             name: 'shop_rcon',
           },
           {
-            path: 'Servers',
+            path: 'servers',
             component: ServersView,
             name: 'shop_servers',
           },
