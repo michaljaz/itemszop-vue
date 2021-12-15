@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <nav class="navbar mb-4" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <router-link to="/panel" class="navbar-item">
           <strong> ItemSzop </strong>
