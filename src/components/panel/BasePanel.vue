@@ -55,7 +55,7 @@
         <div class="navbar-end">
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
-              <span> {{ user.data.displayName }} </span>
+              <span v-if="user.loggedIn"> {{ user.data.displayName }} </span>
             </a>
             <div class="navbar-dropdown">
               <router-link class="navbar-item" :to="{ name: 'panel_settings' }">
